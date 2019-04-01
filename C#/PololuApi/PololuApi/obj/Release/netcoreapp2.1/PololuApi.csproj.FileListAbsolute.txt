@@ -1,0 +1,17 @@
+C:\git\pololuAndroidApp\PololuApi\PololuApi\bin\Release\netcoreapp2.1\PololuApi.deps.json
+C:\git\pololuAndroidApp\PololuApi\PololuApi\bin\Release\netcoreapp2.1\PololuApi.runtimeconfig.json
+C:\git\pololuAndroidApp\PololuApi\PololuApi\bin\Release\netcoreapp2.1\PololuApi.runtimeconfig.dev.json
+C:\git\pololuAndroidApp\PololuApi\PololuApi\bin\Release\netcoreapp2.1\PololuApi.dll
+C:\git\pololuAndroidApp\PololuApi\PololuApi\bin\Release\netcoreapp2.1\PololuApi.pdb
+C:\git\pololuAndroidApp\PololuApi\PololuApi\bin\Release\netcoreapp2.1\Smc.dll
+C:\git\pololuAndroidApp\PololuApi\PololuApi\bin\Release\netcoreapp2.1\UsbWrapper.dll
+C:\git\pololuAndroidApp\PololuApi\PololuApi\obj\Release\netcoreapp2.1\PololuApi.csprojAssemblyReference.cache
+C:\git\pololuAndroidApp\PololuApi\PololuApi\obj\Release\netcoreapp2.1\PololuApi.csproj.CoreCompileInputs.cache
+C:\git\pololuAndroidApp\PololuApi\PololuApi\obj\Release\netcoreapp2.1\PololuApi.RazorAssemblyInfo.cache
+C:\git\pololuAndroidApp\PololuApi\PololuApi\obj\Release\netcoreapp2.1\PololuApi.RazorAssemblyInfo.cs
+C:\git\pololuAndroidApp\PololuApi\PololuApi\obj\Release\netcoreapp2.1\PololuApi.AssemblyInfoInputs.cache
+C:\git\pololuAndroidApp\PololuApi\PololuApi\obj\Release\netcoreapp2.1\PololuApi.AssemblyInfo.cs
+C:\git\pololuAndroidApp\PololuApi\PololuApi\obj\Release\netcoreapp2.1\PololuApi.RazorTargetAssemblyInfo.cache
+C:\git\pololuAndroidApp\PololuApi\PololuApi\obj\Release\netcoreapp2.1\PololuApi.csproj.CopyComplete
+C:\git\pololuAndroidApp\PololuApi\PololuApi\obj\Release\netcoreapp2.1\PololuApi.dll
+C:\git\pololuAndroidApp\PololuApi\PololuApi\obj\Release\netcoreapp2.1\PololuApi.pdb

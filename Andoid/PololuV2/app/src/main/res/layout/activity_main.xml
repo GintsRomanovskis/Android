@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ready));"
+    tools:context=".MainActivity"
+
+    >
+
+    <Button
+        android:id="@+id/resume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:text="Resume"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/seekBarRightValue"
+        app:layout_constraintStart_toEndOf="@+id/seekBarRightValue" />
+
+    <LinearLayout
+        android:id="@+id/horizontalLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="121dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ipAdress"
+        app:layout_constraintVertical_bias="0.26999998">
+
+        <SeekBar
+            android:id="@+id/seekBarLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:max="2000"
+            android:rotation="270" />
+
+
+        <SeekBar
+            android:id="@+id/seekBarRight"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:max="2000"
+            android:rotation="270" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/seekBarLeftValue"
+        android:layout_width="80dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="368dp"
+        android:layout_marginEnd="240dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/responseText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/seekBarRightValue"
+        android:layout_width="85dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="368dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/responseText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/connect_disconnect"
+        android:layout_width="117dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="271dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="36dp"
+        android:text="CONNECT"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/ipAdress"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/responseText"
+        android:layout_width="113dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="94dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.435"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalLayout"
+        app:layout_constraintVertical_bias="0.967" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="100dp"
+        android:text="0"
+        app:layout_constraintBottom_toTopOf="@+id/seekBarLeftValue"
+        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="0" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="132dp"
+        android:layout_marginBottom="300dp"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="0" />
+
+    <EditText
+        android:id="@+id/ipAdress"
+        android:layout_width="180dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="4dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="IP ADDRESS"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalLayout"
+        app:layout_constraintEnd_toStartOf="@+id/connect_disconnect"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:text="Stop"
+        app:layout_constraintEnd_toStartOf="@+id/responseText"
+        app:layout_constraintTop_toTopOf="@+id/responseText" />
+
+</android.support.constraint.ConstraintLayout>
