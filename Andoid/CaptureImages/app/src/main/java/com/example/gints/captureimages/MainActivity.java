@@ -1,10 +1,8 @@
 package com.example.gints.captureimages;
 
-import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
-
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
@@ -17,21 +15,16 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import java.io.File;
-
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -44,15 +37,15 @@ public class MainActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int REQUEST_TAKE_PHOTO = 1;
     //Tensorflow konstantes
-    private static final int INPUT_SIZE = 224;
-    private static final int IMAGE_MEAN = 117;
-    private static final float IMAGE_STD = 1;
-    private static final String INPUT_NAME = "";
+    private static final int INPUT_SIZE = 299;
+    private static final int IMAGE_MEAN = 128;
+    private static final float IMAGE_STD = 128.0f;
+    private static final String INPUT_NAME = "Placeholder";
     private static final String OUTPUT_NAME = "final_result";
     private static final String MODEL_FILE = "file:///android_asset/graph.pb";
     private static final String LABEL_FILE = "file:///android_asset/labels.txt";
     //Objects
-    TensorFlowImageClassifier tensorFlowImageClass = new TensorFlowImageClassifier();
+    //TensorFlowImageClassifier tensorFlowImageClass = new TensorFlowImageClassifier();
     Constants con = new Constants();
     String currentPhotoPath;
     private Executor executor = Executors.newSingleThreadExecutor();
@@ -81,10 +74,7 @@ public class MainActivity extends AppCompatActivity {
         if (!hasCamera())
             captureImagesBtn.setEnabled(false);
 
-
         initTensorFlowAndLoadModel();
-
-
     }
 
     //Check if the user has a camera
@@ -104,8 +94,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         dispatchTakePictureIntent();
-
-
     }
 
 
@@ -162,22 +150,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             //  setPic();
-            results = null;
-            Matrix matrix = getRotation(currentPhotoPath);
-
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inSampleSize = 8;
-
-            bitmap = BitmapFactory.decodeFile(currentPhotoPath, options);
-
-
-            //Bitmap rotatedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-            //imageView.setImageBitmap(rotatedBitmap);
-
-
-            results = classifier.recognizeImage(bitmap);
+            classifyPhoto(currentPhotoPath);
             galleryAddPic();
-            resultView.setText(results.toString());
+
             setPic();
             //  showResult((Result) results);
 
@@ -276,6 +251,54 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+    }
+
+    public void classifyAndShowResult(Bitmap cropedBitmap) {
+
+        results = classifier.recognizeImage(cropedBitmap);
+        resultView.setText(results.toString());
+    }
+
+    public void classifyPhoto(String currentPhotoPath) {
+
+        Bitmap bitmapImage = BitmapFactory.decodeFile(currentPhotoPath);
+        Matrix matrix = getRotation(currentPhotoPath);
+        Bitmap newImage = Bitmap.createBitmap(bitmapImage, 0, 0, bitmapImage.getWidth(), bitmapImage.getHeight(), matrix, true);
+        Bitmap croppedBitmap = resizeImage(newImage, INPUT_SIZE);
+        classifyAndShowResult(croppedBitmap);
+    }
+
+
+    private Bitmap resizeImage(Bitmap bitmap, int newSize) {
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+
+        int newWidth = 0;
+        int newHeight = 0;
+
+        if (width > height) {
+            newWidth = newSize;
+            newHeight = (newSize * height) / width;
+        } else if (width < height) {
+            newHeight = newSize;
+            newWidth = (newSize * width) / height;
+        } else if (width == height) {
+            newHeight = newSize;
+            newWidth = newSize;
+        }
+
+        float scaleWidth = ((float) newWidth) / width;
+        float scaleHeight = ((float) newHeight) / height;
+
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);
+
+        Bitmap resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0,
+                width, height, matrix, true);
+
+        return resizedBitmap;
     }
 
 
