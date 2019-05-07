@@ -11,7 +11,7 @@ import org.json.*;
 public class MainActivity extends AppCompatActivity {
 
     //Rest api url and constant values
-    String C_REST_API_URL = "http://10.41.121.55:5000/api/controls";
+    String C_REST_API_URL = "https://webhook.site/1eddd265-eeb8-4bbb-8103-18e4f1925bac";
     int C_HALF_OF_SEEKBAR = 1000;
 
     //Class elements
