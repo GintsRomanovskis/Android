@@ -8,8 +8,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+import 	androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -168,8 +168,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK && currentPhotoPath != null) {
-            classifyPhoto(currentPhotoPath,null);
+            classifyPhoto(currentPhotoPath, null);
             currentPhotoPath = "";
 
         } else if (requestCode == IMAGE_PICKER_SELECT && resultCode == RESULT_OK) {
@@ -184,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
 
-                classifyPhoto("",selectedImage);
+                classifyPhoto("", selectedImage);
             } else if (selectedMediaUri.toString().contains("video")) {
                 //handle video
             }

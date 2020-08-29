@@ -8,10 +8,9 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.1'
+        classpath 'com.android.tools.build:gradle:4.0.1'
         // https://mvnrepository.com/artifact/org.tensorflow/tensorflow-android
-
-
+        classpath 'com.google.gms:google-services:4.3.3'  // Google Services plugin
 
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -28,8 +27,4 @@ allprojects {
         mavenCentral()
         
     }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "431066641823",
+    "firebase_url": "https://latvianplantrecognition.firebaseio.com",
+    "project_id": "latvianplantrecognition",
+    "storage_bucket": "latvianplantrecognition.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431066641823:android:797cdabd2254a87f",
+        "android_client_info": {
+          "package_name": "com.example.gints.captureimages"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "431066641823-pigq4bta6durqsbogtuij4ar18185pj2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gints.captureimages",
+            "certificate_hash": "ae533d31e5c70190e00de1f389cfea346dec63ca"
+          }
+        },
+        {
+          "client_id": "431066641823-rfu6j9huk8e27q85dsn9oh7tnel9cpgc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFiUHw5U2mi4Jl0e_0dBToPTpiUiUkQVI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "431066641823-rfu6j9huk8e27q85dsn9oh7tnel9cpgc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
