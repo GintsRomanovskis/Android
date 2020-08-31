@@ -1,9 +1,7 @@
 package com.example.gints.captureimages;
 
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Matrix;
-import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -15,7 +13,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,23 +22,18 @@ import com.example.gints.ImageUtils.ImageUtils;
 import com.example.gints.ImageUtils.TextUtils;
 import com.example.gints.Result.ResultActivity;
 import com.example.gints.database.connection;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.lang.reflect.Method;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-
-import static com.example.gints.database.connection.DATABASE_NAME;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imageView;
     private TextView resultView;
     private Bitmap bitmap;
+    private TextView logout;
     Bitmap bitmapImage;
     private InputStream imageStream;
     Matrix matrix;
@@ -82,8 +75,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button captureImagesBtn = (Button) findViewById(R.id.captureImagesBtn);
 
+        //Initialize components
+        Button captureImagesBtn = (Button) findViewById(R.id.captureImagesBtn);
+        logout = findViewById(R.id.logoutTextView);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent openLoginActivity = new Intent(MainActivity.this, com.example.gints.captureimages.loginActivity.class);
+                startActivity(openLoginActivity);
+
+            }
+        });
 
         //Disable the button if the user has no camera
         if (!hasCamera())
@@ -100,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
       }
         //Ja nepieciešams izdzēš datu bāzi
         // this.deleteDatabase("/data/user/0/com.example.gints.captureimages/databases/LeafDb.db");
+        // Get the TextView by id
 
     }
 
@@ -277,6 +283,7 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(pickIntent, IMAGE_PICKER_SELECT);
 
     }
+
 
 
 }
